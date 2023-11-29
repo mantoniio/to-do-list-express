@@ -1,14 +1,11 @@
 const express = require('express');
+const checkListRouter = require('./src/routes/checklist');
 
 const app = express();
+app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('<h1>To Do List</h1>');
-});
+app.use('/checklists', checkListRouter);
 
-app.get('/json', (req, res) => {
-  res.json({ message: 'Tarefa x', done: true });
-});
 
 app.listen(3000, () => {
   console.log('Servidor iniciado http://localhost:3000');
